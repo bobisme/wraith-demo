@@ -7,6 +7,9 @@ to demonstrate a Wraith consumer contract going red in provider CI when a
 provider response shape breaks, then green again when the provider is fixed.
 It is not production sample code.
 
+The captured red/green proof is documented in
+[`docs/provider-ci-red-green.md`](docs/provider-ci-red-green.md).
+
 ## Provider
 
 Run the provider with Python 3.11+:
