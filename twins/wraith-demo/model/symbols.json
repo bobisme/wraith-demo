@@ -1,0 +1,770 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "method": "GET",
+      "path_pattern": "/customers/:param",
+      "route_id": "get_customers_param_e1c45c51",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          2
+        ]
+      },
+      "state_op": "read",
+      "entity_type": "customers",
+      "symbols": [
+        {
+          "name": "$id_3",
+          "path": "$path_segment[1]",
+          "direction": "request",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        },
+        {
+          "name": "$name_4",
+          "path": "$.name",
+          "direction": "response",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 200,
+      "response_template": {
+        "id": "cus_000001",
+        "licenseAgreementID": "lic_cus_000001_enterprise",
+        "name": "name_7d0jTDPSZ9tKMsIptmNyIz",
+        "plan": "enterprise",
+        "status": "active"
+      },
+      "response_headers": {
+        "content-length": "124",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "34399ec0cabe0779",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              2
+            ]
+          },
+          "status": 200,
+          "body_template": {
+            "id": "cus_000001",
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "name": "name_7d0jTDPSZ9tKMsIptmNyIz",
+            "plan": "enterprise",
+            "status": "active"
+          },
+          "headers": {
+            "content-length": "124",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "124"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      },
+      "exact_bodies": {
+        "/customers/cus_000001": {
+          "status": 200,
+          "body": {
+            "id": "cus_000001",
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "name": "name_7d0jTDPSZ9tKMsIptmNyIz",
+            "plan": "enterprise",
+            "status": "active"
+          },
+          "headers": {
+            "content-length": "124",
+            "content-type": "application/json"
+          },
+          "source": "20260706T235828Z-a23ed7/2"
+        }
+      },
+      "enum_paths": [
+        "$.name"
+      ],
+      "known_ids": [
+        "cus_000001"
+      ]
+    },
+    {
+      "method": "GET",
+      "path_pattern": "/health",
+      "route_id": "get_health_ce27093e",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          0
+        ]
+      },
+      "symbols": [
+        {
+          "name": "$service_1",
+          "path": "$.service",
+          "direction": "response",
+          "symbol_type": "String"
+        },
+        {
+          "name": "$value_2",
+          "path": "$path_segment[0]",
+          "direction": "request",
+          "symbol_type": "String"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 200,
+      "response_template": {
+        "ok": true,
+        "service": "wraith-demo"
+      },
+      "response_headers": {
+        "content-length": "36",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "1cc20fe4a98216a8",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              0
+            ]
+          },
+          "status": 200,
+          "body_template": {
+            "ok": true,
+            "service": "wraith-demo"
+          },
+          "headers": {
+            "content-length": "36",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "36"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      },
+      "exact_bodies": {
+        "/health": {
+          "status": 200,
+          "body": {
+            "ok": true,
+            "service": "wraith-demo"
+          },
+          "headers": {
+            "content-length": "36",
+            "content-type": "application/json"
+          },
+          "source": "20260706T235828Z-a23ed7/0"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_pattern": "/orders/ord_000001",
+      "route_id": "get_orders_ord_000001_8ebf9eaa",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          4
+        ]
+      },
+      "symbols": [
+        {
+          "name": "$id_3",
+          "path": "$.customerId",
+          "direction": "response",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        },
+        {
+          "name": "$id_5",
+          "path": "$path_segment[1]",
+          "direction": "request",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 200,
+      "response_template": {
+        "customerId": "cus_000001",
+        "id": "ord_000001",
+        "items": [
+          {
+            "quantity": 3,
+            "sku": "seat",
+            "unitCents": 1200
+          },
+          {
+            "quantity": 1,
+            "sku": "support",
+            "unitCents": 5000
+          }
+        ],
+        "licenseAgreementID": "lic_cus_000001_enterprise",
+        "status": "accepted",
+        "totalCents": 8600
+      },
+      "response_headers": {
+        "content-length": "236",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "4854b227571a1e5c",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              4
+            ]
+          },
+          "status": 200,
+          "body_template": {
+            "customerId": "cus_000001",
+            "id": "ord_000001",
+            "items": [
+              {
+                "quantity": 3,
+                "sku": "seat",
+                "unitCents": 1200
+              },
+              {
+                "quantity": 1,
+                "sku": "support",
+                "unitCents": 5000
+              }
+            ],
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "status": "accepted",
+            "totalCents": 8600
+          },
+          "headers": {
+            "content-length": "236",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "236"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      },
+      "exact_bodies": {
+        "/orders/ord_000001": {
+          "status": 200,
+          "body": {
+            "customerId": "cus_000001",
+            "id": "ord_000001",
+            "items": [
+              {
+                "quantity": 3,
+                "sku": "seat",
+                "unitCents": 1200
+              },
+              {
+                "quantity": 1,
+                "sku": "support",
+                "unitCents": 5000
+              }
+            ],
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "status": "accepted",
+            "totalCents": 8600
+          },
+          "headers": {
+            "content-length": "236",
+            "content-type": "application/json"
+          },
+          "source": "20260706T235828Z-a23ed7/4"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path_pattern": "/orders/summary",
+      "route_id": "get_orders_summary_75531677",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          5
+        ]
+      },
+      "symbols": [
+        {
+          "name": "$value_6",
+          "path": "$path_segment[1]",
+          "direction": "request",
+          "symbol_type": "String"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 200,
+      "response_template": {
+        "currency": "USD",
+        "orderCount": 1,
+        "totalCents": 8600
+      },
+      "response_headers": {
+        "content-length": "52",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "eaa05a8f054980ae",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              5
+            ]
+          },
+          "status": 200,
+          "body_template": {
+            "currency": "USD",
+            "orderCount": 1,
+            "totalCents": 8600
+          },
+          "headers": {
+            "content-length": "52",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "52"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      },
+      "exact_bodies": {
+        "/orders/summary": {
+          "status": 200,
+          "body": {
+            "currency": "USD",
+            "orderCount": 1,
+            "totalCents": 8600
+          },
+          "headers": {
+            "content-length": "52",
+            "content-type": "application/json"
+          },
+          "source": "20260706T235828Z-a23ed7/5"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path_pattern": "/customers",
+      "route_id": "post_customers_f4d684b9",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          1
+        ]
+      },
+      "state_op": "create",
+      "entity_type": "customers",
+      "symbols": [
+        {
+          "name": "$id_3",
+          "path": "$.id",
+          "direction": "response",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        },
+        {
+          "name": "$name_4",
+          "path": "$.name",
+          "direction": "request",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 201,
+      "response_template": {
+        "id": "cus_000001",
+        "licenseAgreementID": "lic_cus_000001_enterprise",
+        "name": "name_7d0jTDPSZ9tKMsIptmNyIz",
+        "plan": "enterprise",
+        "status": "active"
+      },
+      "response_headers": {
+        "content-length": "124",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "aa54481650dfbf8d",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              1
+            ]
+          },
+          "status": 201,
+          "body_template": {
+            "id": "cus_000001",
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "name": "name_7d0jTDPSZ9tKMsIptmNyIz",
+            "plan": "enterprise",
+            "status": "active"
+          },
+          "headers": {
+            "content-length": "124",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "124"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      },
+      "enum_paths": [
+        "$.name"
+      ]
+    },
+    {
+      "method": "POST",
+      "path_pattern": "/orders",
+      "route_id": "post_orders_b7275714",
+      "origin": {
+        "artifact_kind": "base",
+        "artifact_name": "wraith-demo",
+        "artifact_digest": "",
+        "source_sessions": [
+          "20260706T235828Z-a23ed7"
+        ],
+        "source_exchange_indices": [
+          3
+        ]
+      },
+      "state_op": "create",
+      "entity_type": "orders",
+      "symbols": [
+        {
+          "name": "$id_3",
+          "path": "$.customerId",
+          "direction": "request",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        },
+        {
+          "name": "$id_5",
+          "path": "$.id",
+          "direction": "response",
+          "symbol_type": "PrefixedId",
+          "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}"
+        }
+      ],
+      "exchange_count": 1,
+      "response_status": 201,
+      "response_template": {
+        "customerId": "cus_000001",
+        "id": "ord_000001",
+        "items": [
+          {
+            "quantity": 3,
+            "sku": "seat",
+            "unitCents": 1200
+          },
+          {
+            "quantity": 1,
+            "sku": "support",
+            "unitCents": 5000
+          }
+        ],
+        "licenseAgreementID": "lic_cus_000001_enterprise",
+        "status": "accepted",
+        "totalCents": 8600
+      },
+      "response_headers": {
+        "content-length": "236",
+        "content-type": "application/json"
+      },
+      "variants": [
+        {
+          "variant_id": "89a1d7d1de262d42",
+          "origin": {
+            "artifact_kind": "base",
+            "artifact_name": "wraith-demo",
+            "artifact_digest": "",
+            "source_sessions": [
+              "20260706T235828Z-a23ed7"
+            ],
+            "source_exchange_indices": [
+              3
+            ]
+          },
+          "status": 201,
+          "body_template": {
+            "customerId": "cus_000001",
+            "id": "ord_000001",
+            "items": [
+              {
+                "quantity": 3,
+                "sku": "seat",
+                "unitCents": 1200
+              },
+              {
+                "quantity": 1,
+                "sku": "support",
+                "unitCents": 5000
+              }
+            ],
+            "licenseAgreementID": "lic_cus_000001_enterprise",
+            "status": "accepted",
+            "totalCents": 8600
+          },
+          "headers": {
+            "content-length": "236",
+            "content-type": "application/json"
+          },
+          "header_programs": [
+            {
+              "name": "content-length",
+              "rule": {
+                "kind": "constant",
+                "value": "236"
+              }
+            },
+            {
+              "name": "content-type",
+              "rule": {
+                "kind": "constant",
+                "value": "application/json"
+              }
+            }
+          ],
+          "evidence": {
+            "exchange_count": 1,
+            "confidence_bp": 3000,
+            "session_ids": [
+              "20260706T235828Z-a23ed7"
+            ]
+          }
+        }
+      ],
+      "latency_profile": {
+        "p50_ms": 0,
+        "p90_ms": 0,
+        "p99_ms": 0,
+        "sample_count": 1
+      }
+    }
+  ],
+  "symbol_table": {
+    "$id_3": {
+      "symbol_type": "PrefixedId",
+      "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}",
+      "first_seen_exchange": 1,
+      "first_seen_path": "$.id"
+    },
+    "$id_5": {
+      "symbol_type": "PrefixedId",
+      "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}",
+      "first_seen_exchange": 3,
+      "first_seen_path": "$.id"
+    },
+    "$name_4": {
+      "symbol_type": "PrefixedId",
+      "format_pattern": "[a-z]+_[A-Za-z0-9]{6,}",
+      "first_seen_exchange": 2,
+      "first_seen_path": "$.name"
+    },
+    "$service_1": {
+      "symbol_type": "String",
+      "first_seen_exchange": 0,
+      "first_seen_path": "$.service"
+    },
+    "$value_2": {
+      "symbol_type": "String",
+      "first_seen_exchange": 0,
+      "first_seen_path": "$path_segment[0]"
+    },
+    "$value_6": {
+      "symbol_type": "String",
+      "first_seen_exchange": 5,
+      "first_seen_path": "$path_segment[1]"
+    }
+  }
+}

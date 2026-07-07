@@ -1,0 +1,160 @@
+#:schema https://wraith.cx/schemas/wraith.schema.json
+schema_version = 1
+
+[service]
+name = "wraith-demo"
+base_url = "http://127.0.0.1:18080"
+user_agent = "wraith/0.18.3"
+
+[proxy]
+mode = "reverse"
+port = 8080
+
+[serve]
+port = 8081
+session_mode = "header"
+fidelity = "synth"
+deterministic_seed = 42
+debug = false
+strip_headers = true
+rewrite_self_urls = true
+provenance_headers = true
+unknown_entity = "synthesize"
+
+[serve.latency]
+mode = "none"
+min_ms = 0
+max_ms = 5000
+multiplier = 1.0
+
+[serve.limits]
+max_entities_per_type = 10000
+max_total_state_mb = 100
+max_namespaces = 1000
+request_drain_timeout_ms = 5000
+
+[serve.rate_limits]
+
+[serve.clock]
+mode = "real"
+base_epoch = 1640995200
+
+[serve.idempotency]
+enabled = false
+header = "Idempotency-Key"
+ttl_seconds = 86400
+
+[serve.lua]
+on_error = "fail"
+
+[diff]
+required_score = 0.9
+session_pass_rate = 0.95
+scoring_version = 1
+ignore_headers = []
+split_variants = false
+suppress = []
+tagged_union_policy = []
+
+[diff.thresholds]
+status_exact_match = true
+body_structure = 0.9
+body_values = 0.85
+symbol_consistency = 1.0
+header_conformance = 0.8
+
+[diff.overrides]
+
+[diff.fields]
+
+[generate]
+max_iterations = 10
+token_budget = 200000
+time_budget_minutes = 30
+regression_tolerance = 0.0
+
+[generate.symbolization]
+entropy_threshold = 4.5
+min_string_length = 4
+exclude_urls = true
+exclude_natural_language = true
+field_name_hinting = true
+
+[generate.anti_unification]
+min_exchanges_per_route = 3
+low_confidence_threshold = 0.2
+array_mode = "schema"
+array_length = "median"
+drop_empty_array_responses = false
+max_array_representatives = 8
+
+[generate.route_normalization]
+numeric_ids = true
+prefix_pattern_ids = true
+value_flow_confirmation = true
+structural_alignment = false
+
+[generate.guard_inference]
+algorithm = "decision_tree"
+max_depth = 4
+z3_minimization = false
+
+[generate.dependent_cases]
+enabled = false
+min_observations = 4
+max_cases = 64
+min_gain_bits = 1.0
+allow = []
+
+[generate.request_keying]
+mode = "off"
+route = []
+
+[generate.type_inference]
+cross_route_unification = true
+enum_max_values = 5
+enum_min_samples = 3
+
+[generate.routing]
+fallback = []
+air_gapped = false
+
+[generate.runners]
+
+[generate.llm]
+provider = "ollama"
+model = "qwen3.5:9b"
+base_url = "http://localhost:11434"
+timeout_seconds = 120
+temperature = 0.2
+max_tokens = 4096
+
+[refresh]
+sample_strategy = "risk_weighted"
+budget_requests = 500
+
+[recordings]
+max_sessions = 1000
+max_total_size_mb = 5000
+retention_days = 90
+max_body_size_mb = 10
+pack_mode = "none"
+required_for_promotion = true
+
+[passthrough]
+enabled = false
+allow = []
+
+[capabilities]
+add_routes = true
+add_variants = true
+add_schema_extensions = true
+add_fixture_sets = true
+add_fault_profiles = true
+add_lua_handlers = false
+override_variants = false
+override_fixtures = false
+override_lua_handlers = false
+
+[handlers]
+deviation_policy = "error"

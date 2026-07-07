@@ -1,0 +1,9 @@
+provider_status = "blocking"
+accepted_at = "2026-07-07T00:01:28.374974654+00:00"
+accepted_by = "demo-team"
+decided_at = "2026-07-07T00:01:32.968667097+00:00"
+decided_by = "demo-team"
+reason = "required for provider CI red/green demo"
+
+[scenarios]
+checkout_customer_order_contract = "active"

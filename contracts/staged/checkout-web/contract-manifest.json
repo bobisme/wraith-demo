@@ -1,0 +1,173 @@
+{
+  "base": {
+    "artifact": "wraith-demo@sha256:b855e20cae92dc61dc47183a1e51f966ed23c6fe91de955272fb148d08f8444f"
+  },
+  "capabilities_declared": [
+    "http",
+    "wraith"
+  ],
+  "consumer": "checkout-web",
+  "consumer_status": "proposed",
+  "evidence": {
+    "inference_seed": "sha256:e2d67cffb75d97f509995ba5f4c3287c09c64ae5d541ec2b7a9c496bd59ba455",
+    "mode": "reference_only",
+    "source_sessions": [
+      "20260706T235828Z-a23ed7"
+    ]
+  },
+  "helpers": {
+    "scenarios/lib/wraith.lua": {
+      "canonical": true,
+      "digest": "sha256:f4d75019b9bbd25d1e3b6ff217165046879ae333d6443333f7b7d7f0c76697ee",
+      "wraith_helper_api": 1
+    }
+  },
+  "inference": {
+    "edges": [
+      {
+        "client_unique": false,
+        "confidence": 0.0,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.json_body.0",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:3",
+        "sink_location": {
+          "kind": "JsonBody",
+          "pointer": "/customerId"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:1",
+        "source_location": {
+          "kind": "JsonBody",
+          "pointer": "/id"
+        },
+        "support_count": 1,
+        "transform": "Identity"
+      },
+      {
+        "client_unique": false,
+        "confidence": 0.03,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.path_segment.1",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:2",
+        "sink_location": {
+          "index": 1,
+          "kind": "PathSegment"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:1",
+        "source_location": {
+          "kind": "JsonBody",
+          "pointer": "/id"
+        },
+        "support_count": 2,
+        "transform": "Identity"
+      },
+      {
+        "client_unique": false,
+        "confidence": 0.06,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.path_segment.2",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:2",
+        "sink_location": {
+          "index": 0,
+          "kind": "PathSegment"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:1",
+        "source_location": {
+          "index": 0,
+          "kind": "PathSegment"
+        },
+        "support_count": 3,
+        "transform": "Identity"
+      },
+      {
+        "client_unique": false,
+        "confidence": 0.12,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.header.3",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:1",
+        "sink_location": {
+          "kind": "Header",
+          "name": "accept-encoding"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:0",
+        "source_location": {
+          "kind": "Header",
+          "name": "accept-encoding"
+        },
+        "support_count": 5,
+        "transform": "Identity"
+      },
+      {
+        "client_unique": false,
+        "confidence": 0.12,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.header.4",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:1",
+        "sink_location": {
+          "kind": "Header",
+          "name": "host"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:0",
+        "source_location": {
+          "kind": "Header",
+          "name": "host"
+        },
+        "support_count": 5,
+        "transform": "Identity"
+      },
+      {
+        "client_unique": false,
+        "confidence": 0.12,
+        "emitted_as": "metadata_only",
+        "id": "edge.flow.header.5",
+        "session_count": 1,
+        "sink_exchange_id": "20260706T235828Z-a23ed7:1",
+        "sink_location": {
+          "kind": "Header",
+          "name": "user-agent"
+        },
+        "source_exchange_id": "20260706T235828Z-a23ed7:0",
+        "source_location": {
+          "kind": "Header",
+          "name": "user-agent"
+        },
+        "support_count": 5,
+        "transform": "Identity"
+      }
+    ]
+  },
+  "overlay": {
+    "artifact": "wraith-demo@sha256:b855e20cae92dc61dc47183a1e51f966ed23c6fe91de955272fb148d08f8444f"
+  },
+  "owner": "demo-team",
+  "package_kind": "intent_contract_bundle",
+  "provider": "wraith-demo",
+  "provider_requirements": {
+    "auth": [],
+    "preconditions": [],
+    "self_contained": {
+      "package": true,
+      "scenarios": {
+        "checkout_customer_order_contract": true
+      }
+    }
+  },
+  "requires": {
+    "sigil": ">=0.1.0 <0.2.0",
+    "sigil_scenario_schema": "1",
+    "wic_schema": "1",
+    "wraith": ">=0.18.0 <0.19.0",
+    "wraith_helper_api": 1
+  },
+  "scanner": {
+    "override": null,
+    "scanner": "wraith-assemble (provisional)",
+    "verdict": "unscanned"
+  },
+  "schema_version": 1,
+  "wic_schema": "1"
+}

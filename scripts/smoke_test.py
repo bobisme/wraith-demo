@@ -32,13 +32,18 @@ def main() -> None:
     health = request("GET", f"{base}/health")
     assert health == {"ok": True, "service": "wraith-demo"}
 
+    initial_summary = request("GET", f"{base}/orders/summary")
+    initial_order_count = int(initial_summary["orderCount"])
+    initial_total_cents = int(initial_summary["totalCents"])
+
     customer = request(
         "POST",
         f"{base}/customers",
-        {"name": "Acme QA", "plan": "enterprise"},
+        {"name": "ACME_QA", "plan": "enterprise"},
     )
-    assert customer["id"] == "cus_000001"
-    assert customer["licenseAgreementID"] == "lic_cus_000001_enterprise"
+    assert customer["id"].startswith("cus_")
+    assert customer["licenseAgreementID"] == f"lic_{customer['id']}_enterprise"
+    assert customer["name"] == "ACME_QA"
 
     customer_read = request("GET", f"{base}/customers/{customer['id']}")
     assert customer_read == customer
@@ -54,7 +59,7 @@ def main() -> None:
             ],
         },
     )
-    assert order["id"] == "ord_000001"
+    assert order["id"].startswith("ord_")
     assert order["customerId"] == customer["id"]
     assert order["licenseAgreementID"] == customer["licenseAgreementID"]
     assert order["totalCents"] == 8600
@@ -63,7 +68,11 @@ def main() -> None:
     assert order_read == order
 
     summary = request("GET", f"{base}/orders/summary")
-    assert summary == {"currency": "USD", "orderCount": 1, "totalCents": 8600}
+    assert summary == {
+        "currency": "USD",
+        "orderCount": initial_order_count + 1,
+        "totalCents": initial_total_cents + 8600,
+    }
 
     print("smoke test passed")
 

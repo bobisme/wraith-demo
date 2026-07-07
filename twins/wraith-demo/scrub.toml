@@ -1,0 +1,73 @@
+#:schema https://wraith.cx/schemas/scrub.schema.json
+[defaults]
+scrub_auth_headers = true
+scrub_cookies = true
+tokenize_mode = "hmac"
+
+[[rules]]
+scope = "header"
+match = "authorization"
+action = "tokenize"
+
+[[rules]]
+scope = "header"
+match = "cookie"
+action = "tokenize"
+
+[[rules]]
+scope = "header"
+match = "x-api-key"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "api_key"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "secret"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "password"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "token"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "access_token"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "refresh_token"
+action = "tokenize"
+
+[[rules]]
+scope = "query_param"
+match = "client_secret"
+action = "tokenize"
+
+[[rules]]
+scope = "regex"
+match = '\b\d{4}[- ]?\d{4}[- ]?\d{4}[- ]?\d{4}\b'
+action = "redact"
+
+[[rules]]
+scope = "cookie"
+match = "*"
+action = "tokenize"
+
+[pii]
+detect = true
+allowlist = []
+default_action = "tokenize"
+
+[pii.fields]
+always = []
