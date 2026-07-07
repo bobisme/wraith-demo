@@ -92,7 +92,7 @@ class DemoHandler(BaseHTTPRequestHandler):
             customer_id = self.store.next_customer_id()
             customer = {
                 "id": customer_id,
-                "licenseAgreementID": f"lic_{customer_id}_{plan}",
+                "license_agreement_id": f"lic_{customer_id}_{plan}",
                 "name": name,
                 "plan": plan,
                 "status": "active",
@@ -131,8 +131,8 @@ class DemoHandler(BaseHTTPRequestHandler):
                 "customerId": customer_id,
                 "id": order_id,
                 "items": normalized_items,
-                "licenseAgreementID": self.store.customers[customer_id][
-                    "licenseAgreementID"
+                "license_agreement_id": self.store.customers[customer_id][
+                    "license_agreement_id"
                 ],
                 "status": "accepted",
                 "totalCents": total_cents,
