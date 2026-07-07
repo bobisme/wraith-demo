@@ -72,11 +72,13 @@ Run the accepted contract against the live provider:
 
 ```sh
 PORT=8080 python3 provider/server.py
-sigil run contracts/checkout-web/scenarios \
-  --endpoint http://127.0.0.1:8080 \
-  --env WRAITH_SESSION_BASE=local-demo \
-  --json
+WRAITH_SESSION_BASE=local-demo scripts/verify_contracts.sh
 ```
+
+`scripts/verify_contracts.sh` verifies the signed package against
+`trusted-signers`, runs strict package inspection, then executes the accepted
+scenario suite against the live provider. Set `WRAITH_PROVIDER_URL` if the
+provider is not listening on `http://127.0.0.1:8080`.
 
 `sigil run` resolves Wraith helper modules from `.sigil/scenarios/lib`, so this
 repo commits `.sigil/scenarios/lib/wraith.lua` as the canonical helper copy used

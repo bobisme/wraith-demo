@@ -1,0 +1,71 @@
+name: Provider Contracts
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provider-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install Wraith and Sigil
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          curl -fsSL https://wraith.cx/install.sh | sh
+          curl -fsSL https://runsigil.com/install.sh | sh
+          echo "$HOME/.cargo/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+          wraith --version
+          sigil --version
+
+      - name: Run provider contract verification
+        shell: bash
+        env:
+          HOST: 127.0.0.1
+          PORT: "18080"
+          WRAITH_PROVIDER_URL: http://127.0.0.1:18080
+          WRAITH_CONTRACT_RESULTS_DIR: contract-results
+          WRAITH_SESSION_BASE: provider-contracts-${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          set -Eeuo pipefail
+          python3 provider/server.py >provider.log 2>&1 &
+          provider_pid=$!
+          trap 'kill "$provider_pid" 2>/dev/null || true; wait "$provider_pid" 2>/dev/null || true' EXIT
+
+          for _ in {1..60}; do
+            if curl -fsS "$WRAITH_PROVIDER_URL/health" >/dev/null 2>&1; then
+              break
+            fi
+            sleep 0.5
+          done
+
+          curl -fsS "$WRAITH_PROVIDER_URL/health"
+          scripts/verify_contracts.sh
+
+      - name: Print provider log on failure
+        if: failure()
+        shell: bash
+        run: |
+          if [[ -f provider.log ]]; then
+            cat provider.log
+          fi
+
+      - name: Upload contract results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: provider-contract-results
+          path: |
+            contract-results/
+            provider.log
+          if-no-files-found: ignore
